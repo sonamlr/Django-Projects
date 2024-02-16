@@ -22,13 +22,15 @@
     
     <div class="list-item">
     <h1>Todo List Items</h1>
-        <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-            <li>Item 5</li>
-        </ul>
+        <table border="1">
+        {% for i in todolist %}
+        <tr>
+             <td>{{i.item}}</td>
+             <td>{{i.description}}</td>
+        </tr>
+        {% endfor %}
+           
+        </table>
     </div>
     
 </body>
