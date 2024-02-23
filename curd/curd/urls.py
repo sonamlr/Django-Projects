@@ -20,6 +20,7 @@ from curdapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('/add', views.add, name='add'),
-    path('/edit', views.edit, name='edit'),
+    path('add_show', views.add_show, name='add'),
+    path('<int:id>/', views.update_data, name='edit'),
+    path('delete/<int:id>/', views.delete_data, name='delete'),
 ]

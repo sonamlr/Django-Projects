@@ -1,6 +1,36 @@
 {% extends "index.html" %}
 {% block content %}
-
-<h1>Add New details Page</h1>
-<a href="{% url 'add' %}">Add New Student</a>
+<a href="{% url 'add' %}"  >Add New Users</a>
+    <h1>List of Users</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Action</th>
+        </tr>
+        
+        {% for info in users %}
+        {% if info %}
+            <tr>
+                <td>{{info.name}}</td>
+                <td>{{info.email}}</td>
+                <td>{{info.password}}</td>
+                <td>
+                {% comment %} <a href="{% url 'edit' %}" >Edit</a> {% endcomment %}
+                <form action="{% url 'delete' info.id %}" method="post">
+                {% csrf_token %}
+                    <input type="submit" value="Delete" >
+                </form>
+                </td>
+            </tr>
+        {% else %}
+        <p>Data Not Found</p>
+        {% endif %}
+        {% endfor %} 
+        
+            
+        
+        
+    </table>
 {% endblock content %}

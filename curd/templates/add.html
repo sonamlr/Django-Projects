@@ -1,6 +1,23 @@
 {% extends "index.html" %}
 {% block content %}
 
-<h1>Add New details Page</h1>
+<h1>Add New  User</h1>
+{% comment %} <form method='post' action=''>
+    {% csrf_token %}
+    {{form.as_p}}
+</form> {% endcomment %}
+<form method="post" action="">
+    {% csrf_token %}
+    <table>
+        {% for field in form %}
+            <tr>
+                <td>{{ field.label_tag }}</td>
+                <td>{{ field }}</td>
+                <td>{{ field.errors }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <button type="submit">Submit</button>
+</form>
 
 {% endblock content %}
